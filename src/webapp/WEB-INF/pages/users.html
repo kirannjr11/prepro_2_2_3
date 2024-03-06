@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+</head>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<body>
+
+<h1>Add User</h1>
+
+<form th:action="add" th:method="post" th:object="${userForm}">
+    <label for="firstName">First Name</label><br>
+    <input type="text" th:field="*{firstName}">
+    <br>
+    <label for="lastName">Last Name</label><br>
+    <input type="text" th:field="*{lastName}">
+    <br>
+    <label for="country">Country</label><br>
+    <input type="text" th:field="*{country}">
+    <br><br>
+    <button type="submit">Add User</button>
+</form>
+
+
+<h1>User List</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Country</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.country}"></td>
+        <td><a th:href="@{/edit(id=${user.id})}">Edit</a></td>
+        <td><a th:href="@{/delete(id=${user.id})}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
