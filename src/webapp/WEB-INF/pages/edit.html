@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+qui<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
@@ -52,13 +52,13 @@
 <form th:action="@{/edited(id=${id})}" th:method="post" th:object="${editUserForm}">
     <a>Id : </a><a th:text="${id}"></a><br>
     <label for="firstName">First Name</label><br>
-    <input type="text" th:field="*{firstName}">
+    <input type="text" th:field="*{firstName}" required>
     <br>
     <label for="lastName">Last Name</label><br>
-    <input type="text" th:field="*{lastName}">
+    <input type="text" th:field="*{lastName}" required>
     <br>
     <label for="country">Country</label><br>
-    <input type="text" th:field="*{country}">
+    <input type="text" th:field="*{country}" required>
     <br><br>
     <button type="submit">Edit User</button>
 </form>
